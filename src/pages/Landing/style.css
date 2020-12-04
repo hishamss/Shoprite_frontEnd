@@ -1,0 +1,25 @@
+#landing-container {
+  height: 100%;
+  background-image: url("/src/images/landing-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-card {
+  background-color: rgba(66, 65, 65, 0.75);
+  width: 20%;
+  height: 42%;
+  color: white;
+}
+
+#login-form {
+  margin-top: 40px;
+  text-align: center;
+}
+#login-message {
+  color: red;
+}
