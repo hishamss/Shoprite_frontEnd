@@ -9,3 +9,11 @@ export const loginAPI = (username, password) => {
   };
   return fetch("/login", request);
 };
+
+export const logoutAPI = () => {
+  return fetch("/logout");
+};
+
+export const employeesAPI = () => {
+  return fetch("/employees");
+};

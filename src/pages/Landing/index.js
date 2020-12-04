@@ -11,19 +11,23 @@ function Landing() {
     event.preventDefault();
     const usernameToSubmit = username.current.value.trim();
     const passwordToSubmit = password.current.value.trim();
+
     setMessage("");
     if (usernameToSubmit && passwordToSubmit) {
       loginAPI(usernameToSubmit, passwordToSubmit)
         .then((response) => {
           if (response.status === 200) {
-            console.log("logged in successfully; forward to the home page");
+            console.log("logged in successfully;");
+            console.log(response);
+
+            window.location.href = "/home";
           } else if (response.status === 401) {
             console.log("incorrect username/password");
             setMessage("incorrect username/password");
           }
         })
         .catch((err) => {
-          console.log("smth went wrong; try again");
+          console.log(err);
           setMessage("smth went wrong; try again");
         });
     } else {
