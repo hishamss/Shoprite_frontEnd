@@ -1,6 +1,7 @@
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Logout from "./pages/Logout";
+import NavBar from "./components/NavBar";
 import React, { useState, useEffect } from "react";
 import {
   Route,
@@ -20,6 +21,8 @@ function App() {
 
   return (
     <div className="App" style={{ height: "100%" }}>
+      {/* Display navbar only if the user is logged in  */}
+      {isAuthenticated && <NavBar />}
       <Router>
         <Switch>
           {isAuthenticated ? (

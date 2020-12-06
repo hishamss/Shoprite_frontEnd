@@ -1,0 +1,29 @@
+#navbar-container {
+  background-color: #ed1b2e;
+  color: white;
+  height: 64px;
+  padding: 0 30px;
+}
+
+#basic-navbar-nav {
+  background-color: #ed1b2e;
+}
+
+#navbar-logo {
+  float: left;
+}
+
+#navbar-links {
+  color: white;
+}
+
+.nav-link {
+  color: white !important;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 20px !important;
+}
+
+.nav-link:hover {
+  border: 1px solid white;
+}
