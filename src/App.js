@@ -1,6 +1,6 @@
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
-import Logout from "./pages/Logout";
+import NavBar from "./components/NavBar";
 import React, { useState, useEffect } from "react";
 import {
   Route,
@@ -21,6 +21,8 @@ function App() {
   return (
     <div className="App" style={{ height: "100%" }}>
       <Router>
+        {/* Display navbar only if the user is logged in  */}
+        {isAuthenticated && <NavBar />}
         <Switch>
           {isAuthenticated ? (
             <Redirect from="/" to="/home" exact />
@@ -31,7 +33,6 @@ function App() {
             <Route exact path="/login" component={Landing} />
           )}
           {isAuthenticated && <Route exact path="/home" component={Home} />}
-          {isAuthenticated && <Route exact path="/logout" component={Logout} />}
           {isAuthenticated && <Route path="/" component={Home} />}
           {!isAuthenticated && <Route path="/" component={Landing} />}
         </Switch>
