@@ -25,5 +25,5 @@
 }
 
 .nav-link:hover {
-  border: 1px solid white;
+  color: #f4b827 !important;
 }
