@@ -3,7 +3,14 @@ import logo from "../../images/logo-navbar.png";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { logoutAPI } from "../../API";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 function NavBar() {
+  const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    setCurrentUser(Cookies.get("username"));
+  }, []);
   const handleLogout = () => {
     logoutAPI()
       .then((response) => {
@@ -37,7 +44,7 @@ function NavBar() {
             Delete Employee
           </Nav.Link>
           <Nav.Link href="#" key="5" onClick={handleLogout}>
-            Logout
+            Logout({currentUser})
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

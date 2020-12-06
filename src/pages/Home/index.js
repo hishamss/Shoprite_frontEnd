@@ -1,13 +1,11 @@
 import "./style.css";
 import { employeesAPI } from "../../API";
 import React, { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 function Home() {
   const [employees, setEmployees] = useState([]);
-  const [currentUser, setCurrentUser] = useState("");
+
   useEffect(() => {
     getEmployees();
-    setCurrentUser(Cookies.get("username"));
   }, []);
   const getEmployees = () => {
     employeesAPI()
@@ -22,7 +20,6 @@ function Home() {
   };
   return (
     <>
-      <h1>Hello {currentUser}</h1>
       <div>
         {employees.map((employee, index) => {
           return (
