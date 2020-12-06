@@ -44,7 +44,7 @@ function NavBar() {
             Delete Employee
           </Nav.Link>
           <Nav.Link href="#" key="5" onClick={handleLogout}>
-            Logout({currentUser})
+            Logout ({currentUser})
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
