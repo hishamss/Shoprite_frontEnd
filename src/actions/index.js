@@ -6,7 +6,7 @@ export const getUser = (username) => {
 };
 export const showChangeEmployeeForm = () => {
   return {
-    type: "show",
+    type: "show-form",
   };
 };
 
@@ -18,6 +18,18 @@ export const getEmployeeId = (id) => {
 };
 export const hideChangeEmployeeForm = () => {
   return {
-    type: "hide",
+    type: "hide-form",
+  };
+};
+
+export const showDeleteEmployeeConfirmation = () => {
+  return {
+    type: "show-conf",
+  };
+};
+
+export const hideDeleteEmployeeConfirmation = () => {
+  return {
+    type: "hide-conf",
   };
 };

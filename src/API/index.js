@@ -29,3 +29,7 @@ export const changeRoleAPI = (id, newRole) => {
   };
   return fetch("/change", request);
 };
+
+export const deleteEmployeeAPI = (id) => {
+  return fetch(`/fire?id=${id}`);
+};

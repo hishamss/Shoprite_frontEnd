@@ -1,8 +1,7 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { hideChangeEmployeeForm } from "../../actions";
 import { useRef } from "react";
-import { Form } from "react-bootstrap";
 import { changeRoleAPI } from "../../API";
 import "./style.css";
 function ChangeEmployeeRoleForm() {
@@ -26,7 +25,7 @@ function ChangeEmployeeRoleForm() {
               .getElementsByClassName(
                 "employee-role"
               )[0].innerHTML = newRoleToSubmit;
-            dispatch(hideChangeEmployeeForm());
+            handleClose();
           } else alert("something went wrong!!");
         })
         .catch((err) => {
