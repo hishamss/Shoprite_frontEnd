@@ -1,5 +1,6 @@
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
+import NewEmployee from "./pages/NewEmployee";
 import NavBar from "./components/NavBar";
 import React, { useState, useEffect } from "react";
 import {
@@ -33,6 +34,9 @@ function App() {
             <Route exact path="/login" component={Landing} />
           )}
           {isAuthenticated && <Route exact path="/home" component={Home} />}
+          {isAuthenticated && (
+            <Route exact path="/new" component={NewEmployee} />
+          )}
           {isAuthenticated && <Route path="/" component={Home} />}
           {!isAuthenticated && <Route path="/" component={Landing} />}
         </Switch>
