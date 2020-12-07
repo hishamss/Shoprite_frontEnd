@@ -2,9 +2,14 @@ import "./style.css";
 import { employeesAPI } from "../../API";
 import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
-import { showChangeEmployeeForm, getEmployeeId } from "../../actions";
+import {
+  showChangeEmployeeForm,
+  getEmployeeId,
+  showDeleteEmployeeConfirmation,
+} from "../../actions";
 import { useDispatch } from "react-redux";
 import ChangeEmployeeRoleForm from "../../components/ChangeEmployeeRoleForm";
+import DeleteEmployee from "../../components/DeleteEmployee";
 function Home() {
   const [employees, setEmployees] = useState([]);
   const dispatch = useDispatch();
@@ -14,6 +19,11 @@ function Home() {
 
   const changeRoleHandler = (id) => {
     dispatch(showChangeEmployeeForm());
+    dispatch(getEmployeeId(id));
+  };
+
+  const deleteEmployeeHandler = (id) => {
+    dispatch(showDeleteEmployeeConfirmation());
     dispatch(getEmployeeId(id));
   };
   const getEmployees = () => {
@@ -50,7 +60,11 @@ function Home() {
               </Button>
               <br />
               <br />
-              <Button className="employee-Btns" variant="outline-danger">
+              <Button
+                className="employee-Btns"
+                variant="outline-danger"
+                onClick={() => deleteEmployeeHandler(employee.id)}
+              >
                 Delete Employee
               </Button>
             </Card.Body>
@@ -58,6 +72,7 @@ function Home() {
         );
       })}
       <ChangeEmployeeRoleForm />
+      <DeleteEmployee />
     </div>
   );
 }
