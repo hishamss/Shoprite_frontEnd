@@ -37,13 +37,7 @@ function NavBar() {
           <Nav.Link to="/add" key="2">
             New Employee
           </Nav.Link>
-          <Nav.Link to="/change" key="3">
-            Change Employee's Role
-          </Nav.Link>
-          <Nav.Link to="/delete" key="4">
-            Delete Employee
-          </Nav.Link>
-          <Nav.Link href="#" key="5" onClick={handleLogout}>
+          <Nav.Link href="#" key="3" onClick={handleLogout}>
             Logout ({currentUser})
           </Nav.Link>
         </Nav>

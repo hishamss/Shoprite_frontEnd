@@ -17,3 +17,15 @@ export const logoutAPI = () => {
 export const employeesAPI = () => {
   return fetch("/employees");
 };
+
+export const changeRoleAPI = (id, newRole) => {
+  const request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      Accept: "application/json",
+    },
+    body: `id=${id}&newRole=${newRole}`,
+  };
+  return fetch("/change", request);
+};
