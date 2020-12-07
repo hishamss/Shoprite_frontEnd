@@ -7,6 +7,7 @@
 
 #basic-navbar-nav {
   background-color: #ed1b2e;
+  z-index: 100;
 }
 
 #navbar-logo {

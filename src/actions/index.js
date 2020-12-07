@@ -4,12 +4,19 @@ export const getUser = (username) => {
     payload: username,
   };
 };
-export const showNewEmployeeForm = () => {
+export const showChangeEmployeeForm = () => {
   return {
     type: "show",
   };
 };
-export const hideNewEmployeeForm = () => {
+
+export const getEmployeeId = (id) => {
+  return {
+    type: "id",
+    payload: id,
+  };
+};
+export const hideChangeEmployeeForm = () => {
   return {
     type: "hide",
   };

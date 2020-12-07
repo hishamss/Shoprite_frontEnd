@@ -1,10 +1,14 @@
 import { Modal, Button } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { hideChangeEmployeeForm } from "../../actions";
 import "./style.css";
-function NewEmployeeForm() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function ChangeEmployeeRoleForm() {
+  const show = useSelector((state) => state.ChangeEmployeeRoleForm);
+  const employeeId = useSelector((state) => state.GetEmployeeId);
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(hideChangeEmployeeForm());
+  };
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -24,4 +28,4 @@ function NewEmployeeForm() {
   );
 }
 
-export default NewEmployeeForm;
+export default ChangeEmployeeRoleForm;

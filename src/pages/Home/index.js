@@ -1,15 +1,26 @@
 import "./style.css";
-import { employeesAPI } from "../../API";
+import { employeesAPI, changeRoleAPI } from "../../API";
 import React, { useState, useEffect } from "react";
-import NewEmployeeForm from "../../components/NewEmployeeForm";
-import { showNewEmployeeForm, hideNewEmployeeForm } from "../../actions";
+import { Card, Button } from "react-bootstrap";
+import {
+  showChangeEmployeeForm,
+  getEmployeeId,
+  hideChangeEmployeeForm,
+} from "../../actions";
 import { useDispatch } from "react-redux";
+import ChangeEmployeeRoleForm from "../../components/ChangeEmployeeRoleForm";
 function Home() {
   const [employees, setEmployees] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     getEmployees();
   }, []);
+
+  const changeRoleHandler = (id) => {
+    console.log(`change role for ${id}`);
+    dispatch(showChangeEmployeeForm());
+    dispatch(getEmployeeId(id));
+  };
   const getEmployees = () => {
     employeesAPI()
       .then((response) => response.json())
@@ -22,19 +33,37 @@ function Home() {
       });
   };
   return (
-    <>
-      <h1>Hello {currentUser}</h1>
-      <div>
-        {employees.map((employee, index) => {
-          return (
-            <h1 key={index}>
-              name: {employee.names}, job: {employee.jobs}
-            </h1>
-          );
-        })}
-      </div>
-      <NewEmployeeForm />
-    </>
+    <div className="container" id="employees-container">
+      {employees.map((employee, index) => {
+        return (
+          <Card key={index} className="employee-cards">
+            <Card.Body style={{ textAlign: "center" }}>
+              <Card.Title>
+                <h2>{employee.names}</h2>
+              </Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                {employee.jobs}
+              </Card.Subtitle>
+              <br />
+
+              <Button
+                className="employee-Btns"
+                variant="outline-danger"
+                onClick={() => changeRoleHandler(employee.id)}
+              >
+                Change Role
+              </Button>
+              <br />
+              <br />
+              <Button className="employee-Btns" variant="outline-danger">
+                Delete Employee
+              </Button>
+            </Card.Body>
+          </Card>
+        );
+      })}
+      <ChangeEmployeeRoleForm />
+    </div>
   );
 }
 
