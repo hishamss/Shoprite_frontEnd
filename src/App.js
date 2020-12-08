@@ -2,43 +2,52 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import NewEmployee from "./pages/NewEmployee";
 import NavBar from "./components/NavBar";
-import React, { useState, useEffect } from "react";
-import {
-  Route,
-  Switch,
-  Redirect,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 // to get user data from the sotred cookie on the browser
 import Cookies from "js-cookie";
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(() => {
+  const isLoggedIn = () => {
     if (Cookies.get("username") !== undefined) {
-      setIsAuthenticated(true);
+      return true;
     }
-  }, []);
-
+    return false;
+  };
   return (
     <div className="App" style={{ height: "100%" }}>
       <Router>
         {/* Display navbar only if the user is logged in  */}
-        {isAuthenticated && <NavBar />}
+        {isLoggedIn() ? <NavBar /> : null}
+
         <Switch>
-          {isAuthenticated ? (
-            <Redirect from="/" to="/home" exact />
-          ) : (
-            <Redirect from="/" to="/login" exact />
-          )}
-          {!isAuthenticated && (
-            <Route exact path="/login" component={Landing} />
-          )}
-          {isAuthenticated && <Route exact path="/home" component={Home} />}
-          {isAuthenticated && (
-            <Route exact path="/new" component={NewEmployee} />
-          )}
-          {isAuthenticated && <Route path="/" component={Home} />}
-          {!isAuthenticated && <Route path="/" component={Landing} />}
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              !isLoggedIn() ? <Landing /> : (window.location.href = "/home")
+            }
+          />
+          <Route
+            exact
+            path="/home"
+            render={() =>
+              isLoggedIn() ? <Home /> : (window.location.href = "/login")
+            }
+          />
+          <Route
+            exact
+            path="/new"
+            render={() =>
+              isLoggedIn() ? <NewEmployee /> : (window.location.href = "/login")
+            }
+          />
+          <Route
+            path="/"
+            render={() =>
+              isLoggedIn()
+                ? (window.location.href = "/home")
+                : (window.location.href = "/login")
+            }
+          />
         </Switch>
       </Router>
     </div>

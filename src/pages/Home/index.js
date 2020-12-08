@@ -14,7 +14,6 @@ function Home() {
   const [employees, setEmployees] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("getEmployees");
     getEmployees();
   }, []);
 
