@@ -13,6 +13,11 @@ function App() {
     }
     return false;
   };
+
+  const isAdmin = () => {
+    // return true if the current user is admin
+    return Cookies.get("username") === "admin";
+  };
   return (
     <div className="App" style={{ height: "100%" }}>
       <Router>
@@ -44,7 +49,11 @@ function App() {
             path="/new"
             render={() => {
               if (isLoggedIn()) {
-                return <NewEmployee />;
+                if (isAdmin()) {
+                  return <NewEmployee />;
+                } else {
+                  window.location.href = "/home";
+                }
               } else {
                 alert("Session is expired!!");
                 window.location.href = "/login";

@@ -34,9 +34,11 @@ function NavBar() {
           <Nav.Link as={NavLink} to="/home" key="1">
             Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/new" key="2">
-            New Employee
-          </Nav.Link>
+          {currentUser === "admin" ? (
+            <Nav.Link as={NavLink} to="/new" key="2">
+              New Employee
+            </Nav.Link>
+          ) : null}
           <Nav.Link href="#" key="3" onClick={handleLogout}>
             Logout ({currentUser})
           </Nav.Link>
