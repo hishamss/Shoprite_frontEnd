@@ -2,6 +2,7 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import NewEmployee from "./pages/NewEmployee";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 // to get user data from the sotred cookie on the browser
 import Cookies from "js-cookie";
@@ -62,6 +63,7 @@ function App() {
             }}
           />
         </Switch>
+        {isLoggedIn() ? <Footer /> : null}
       </Router>
     </div>
   );
