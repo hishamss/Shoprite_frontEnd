@@ -43,5 +43,6 @@ export const newEmployeeAPI = (name, role) => {
     },
     body: `names=${name}&jobs=${role}`,
   };
+
   return fetch("/add", request);
 };

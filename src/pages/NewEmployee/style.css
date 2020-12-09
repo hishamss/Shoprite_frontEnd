@@ -7,9 +7,9 @@
 }
 #newEmployeeForm-container {
   width: 35%;
-  height: 65%;
   border-radius: 1rem;
   box-shadow: 0px 5px 5px #ccc;
+  padding-bottom: 50px;
 }
 
 #form-header {
@@ -30,4 +30,10 @@
 #form-body button {
   border-radius: 1rem;
   width: 100%;
+}
+
+#newEmployee-loadingGIF {
+  display: none;
+  height: 11px;
+  margin-bottom: 16px;
 }
