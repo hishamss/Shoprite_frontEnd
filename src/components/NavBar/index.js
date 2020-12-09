@@ -25,7 +25,7 @@ function NavBar() {
 
   return (
     <Navbar id="navbar-container" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand as={NavLink} to="/home">
         <img src={logo} alt="shoprite-logo" width="100" height="60"></img>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,7 +34,7 @@ function NavBar() {
           <Nav.Link as={NavLink} to="/home" key="1">
             Home
           </Nav.Link>
-          <Nav.Link to="/add" key="2">
+          <Nav.Link as={NavLink} to="/new" key="2">
             New Employee
           </Nav.Link>
           <Nav.Link href="#" key="3" onClick={handleLogout}>

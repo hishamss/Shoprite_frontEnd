@@ -33,3 +33,15 @@ export const changeRoleAPI = (id, newRole) => {
 export const deleteEmployeeAPI = (id) => {
   return fetch(`/fire?id=${id}`);
 };
+
+export const newEmployeeAPI = (name, role) => {
+  const request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      Accept: "application/json",
+    },
+    body: `names=${name}&jobs=${role}`,
+  };
+  return fetch("/add", request);
+};

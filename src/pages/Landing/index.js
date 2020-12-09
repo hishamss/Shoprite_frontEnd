@@ -47,6 +47,7 @@ function Landing() {
                 type="text"
                 placeholder="Enter Username"
                 required
+                autoComplete="off"
               />
             </Form.Group>
             <Form.Group controlId="login-password">
@@ -55,6 +56,7 @@ function Landing() {
                 type="password"
                 placeholder="Enter Password"
                 required
+                autoComplete="off"
               />
             </Form.Group>
             <p id="login-message">{message}</p>
