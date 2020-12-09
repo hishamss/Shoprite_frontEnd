@@ -29,24 +29,37 @@ function App() {
           <Route
             exact
             path="/home"
-            render={() =>
-              isLoggedIn() ? <Home /> : (window.location.href = "/login")
-            }
+            render={() => {
+              if (isLoggedIn()) {
+                return <Home />;
+              } else {
+                alert("Session is expired!!");
+                window.location.href = "/login";
+              }
+            }}
           />
           <Route
             exact
             path="/new"
-            render={() =>
-              isLoggedIn() ? <NewEmployee /> : (window.location.href = "/login")
-            }
+            render={() => {
+              if (isLoggedIn()) {
+                return <NewEmployee />;
+              } else {
+                alert("Session is expired!!");
+                window.location.href = "/login";
+              }
+            }}
           />
           <Route
             path="/"
-            render={() =>
-              isLoggedIn()
-                ? (window.location.href = "/home")
-                : (window.location.href = "/login")
-            }
+            render={() => {
+              if (isLoggedIn()) {
+                window.location.href = "/home";
+              } else {
+                alert("Session is expired!!");
+                window.location.href = "/login";
+              }
+            }}
           />
         </Switch>
       </Router>
