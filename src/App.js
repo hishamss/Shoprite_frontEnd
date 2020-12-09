@@ -50,6 +50,7 @@ function App() {
             render={() => {
               if (isLoggedIn()) {
                 if (isAdmin()) {
+                  //render this page only if the user logged in and admin
                   return <NewEmployee />;
                 } else {
                   window.location.href = "/home";
