@@ -19,7 +19,7 @@ function App() {
     return Cookies.get("username") === "admin";
   };
   return (
-    <div className="App" style={{ height: "100%" }}>
+    <div className="App">
       <Router>
         {/* Display navbar only if the user is logged in  */}
         {isLoggedIn() ? <NavBar /> : null}
