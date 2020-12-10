@@ -24,18 +24,30 @@ function NavBar() {
   };
 
   return (
-    <Navbar id="navbar-container" expand="lg">
+    <Navbar id="navbar-container" expand="lg" sticky="top">
       <Navbar.Brand as={NavLink} to="/home">
         <img src={logo} alt="shoprite-logo" width="100" height="60"></img>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto" id="navbar-links">
-          <Nav.Link as={NavLink} to="/home" key="1">
+          <Nav.Link
+            as={NavLink}
+            exact
+            activeClassName="activeLink"
+            to="/home"
+            key="1"
+          >
             Home
           </Nav.Link>
           {currentUser === "admin" ? (
-            <Nav.Link as={NavLink} to="/new" key="2">
+            <Nav.Link
+              as={NavLink}
+              exact
+              activeClassName="activeLink"
+              to="/new"
+              key="2"
+            >
               New Employee
             </Nav.Link>
           ) : null}
