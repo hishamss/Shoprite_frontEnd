@@ -52,7 +52,12 @@
       }
       .App {
         height: 100%;
-        overflow: auto;
+        overflow: scroll;
+      }
+      /* hide the scrollbar  */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
       }
     </style>
   </head>

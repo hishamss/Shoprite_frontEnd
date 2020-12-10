@@ -28,3 +28,7 @@
 .nav-link:hover {
   color: #f4b827 !important;
 }
+
+.activeLink {
+  color: #f4b827 !important;
+}
