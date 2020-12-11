@@ -5,10 +5,7 @@ import { NavLink } from "react-router-dom";
 import { logoutAPI } from "../../API";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { logout } from "../../actions";
-import { useDispatch } from "react-redux";
 function NavBar() {
-  const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
