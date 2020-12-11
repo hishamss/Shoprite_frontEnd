@@ -12,6 +12,8 @@
 #login-card {
   background-color: rgba(66, 65, 65, 0.75);
   color: white;
+  height: 500px;
+  padding: 30px;
 }
 
 #login-form {
@@ -20,4 +22,17 @@
 }
 #login-message {
   color: red;
+}
+
+#login-btn {
+  width: 100%;
+  background-color: #c92234 !important;
+  border-color: #c92234 !important;
+  font-size: 1.5rem;
+  border-radius: 1.2rem;
+}
+
+#login-btn:hover {
+  background-color: #dba618 !important;
+  border-color: #dba618 !important;
 }

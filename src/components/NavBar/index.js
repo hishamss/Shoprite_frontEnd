@@ -5,7 +5,10 @@ import { NavLink } from "react-router-dom";
 import { logoutAPI } from "../../API";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { logout } from "../../actions";
+import { useDispatch } from "react-redux";
 function NavBar() {
+  const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
@@ -15,11 +18,11 @@ function NavBar() {
     logoutAPI()
       .then((response) => {
         if (response.status === 200) {
-          window.location.href = "/login";
+          window.location.href = "/";
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert("smth went wrong!!");
       });
   };
 
@@ -51,7 +54,7 @@ function NavBar() {
               New Employee
             </Nav.Link>
           ) : null}
-          <Nav.Link href="#" key="3" onClick={handleLogout}>
+          <Nav.Link to="/logout" key="3" onClick={handleLogout}>
             Logout ({currentUser})
           </Nav.Link>
         </Nav>
