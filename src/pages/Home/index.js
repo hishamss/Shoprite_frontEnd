@@ -37,8 +37,7 @@ function Home() {
   };
   const getEmployees = () => {
     employeesAPI()
-      .then((response) => response.json())
-      .then((data) => {
+      .then(({ data }) => {
         setEmployees(data);
       })
 

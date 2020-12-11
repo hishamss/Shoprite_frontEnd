@@ -17,18 +17,15 @@ function Landing() {
       loginAPI(usernameToSubmit, passwordToSubmit)
         .then((response) => {
           if (response.status === 200) {
-            console.log("logged in successfully;");
-            console.log(response);
-
             window.location.href = "/home";
-          } else if (response.status === 401) {
-            console.log("incorrect username/password");
-            setMessage("incorrect username/password");
           }
         })
         .catch((err) => {
-          console.log(err);
-          setMessage("smth went wrong; try again");
+          if (err.response.status === 401) {
+            setMessage("incorrect username/password");
+          } else {
+            setMessage("smth went wrong; try again");
+          }
         });
     } else {
       console.log("username & password are required!!");
