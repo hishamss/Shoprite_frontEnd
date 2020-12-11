@@ -19,7 +19,7 @@ pipeline {
         }
         stage('deploy'){
         	steps{
-        		sh 'cp /home/ec2-user/.jenkins/workspace/shoprite-frontend/build/* /home/ec2-user/nodeFiles/public/'
+        		sh 'cp -R /home/ec2-user/.jenkins/workspace/shoprite-frontend/build/* /home/ec2-user/nodeFiles/public/'
         	}
         }
     }    
