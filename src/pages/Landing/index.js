@@ -3,6 +3,7 @@ import { loginAPI } from "../../API";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Form, Button } from "react-bootstrap";
 import { useRef, useState } from "react";
+
 function Landing() {
   const username = useRef("");
   const password = useRef("");
@@ -17,7 +18,7 @@ function Landing() {
       loginAPI(usernameToSubmit, passwordToSubmit)
         .then((response) => {
           if (response.status === 200) {
-            window.location.href = "/home";
+            window.location.href = "/";
           }
         })
         .catch((err) => {
@@ -36,7 +37,7 @@ function Landing() {
     <div id="landing-container">
       <Card id="login-card">
         <Card.Body>
-          <h3>Welcome to Shoprite</h3>
+          <h1 style={{ marginTop: "20px" }}>Welcome to Shoprite</h1>
           <Form id="login-form" onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="login-username">
               <Form.Control
@@ -45,7 +46,9 @@ function Landing() {
                 placeholder="Enter Username"
                 required
                 autoComplete="off"
+                style={{ height: "3.2rem" }}
               />
+              <br />
             </Form.Group>
             <Form.Group controlId="login-password">
               <Form.Control
@@ -54,11 +57,12 @@ function Landing() {
                 placeholder="Enter Password"
                 required
                 autoComplete="off"
+                style={{ height: "3.2rem" }}
               />
             </Form.Group>
             <p id="login-message">{message}</p>
             <br />
-            <Button variant="primary" type="submit">
+            <Button id="login-btn" variant="primary" type="submit">
               Login
             </Button>
           </Form>

@@ -3,7 +3,12 @@ import Home from "./pages/Home";
 import NewEmployee from "./pages/NewEmployee";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Redirect,
+} from "react-router-dom";
 // to get user data from the sotred cookie on the browser
 import Cookies from "js-cookie";
 function App() {
@@ -13,7 +18,6 @@ function App() {
     }
     return false;
   };
-
   const isAdmin = () => {
     // return true if the current user is admin
     return Cookies.get("username") === "admin";
@@ -29,7 +33,8 @@ function App() {
             exact
             path="/login"
             render={() =>
-              !isLoggedIn() ? <Landing /> : (window.location.href = "/home")
+              // !isLoggedIn() ? <Landing /> : (window.location.href = "/home")
+              !isLoggedIn() ? <Landing /> : <Redirect to="/home" />
             }
           />
           <Route
@@ -39,8 +44,7 @@ function App() {
               if (isLoggedIn()) {
                 return <Home />;
               } else {
-                alert("Session is expired!!");
-                window.location.href = "/login";
+                return <Redirect to="/login" />;
               }
             }}
           />
@@ -53,11 +57,10 @@ function App() {
                   //render this page only if the user logged in and admin
                   return <NewEmployee />;
                 } else {
-                  window.location.href = "/home";
+                  return <Redirect to="/home" />;
                 }
               } else {
-                alert("Session is expired!!");
-                window.location.href = "/login";
+                return <Redirect to="/login" />;
               }
             }}
           />
@@ -65,10 +68,9 @@ function App() {
             path="/"
             render={() => {
               if (isLoggedIn()) {
-                window.location.href = "/home";
+                return <Redirect to="/home" />;
               } else {
-                alert("Session is expired!!");
-                window.location.href = "/login";
+                return <Redirect to="/login" />;
               }
             }}
           />

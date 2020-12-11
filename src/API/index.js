@@ -1,12 +1,15 @@
 const axios = require("axios");
 axios.defaults.withCredentials = true;
 const qs = require("qs");
+const devURL = "http://localhost:8080/shoprite";
+const prodURL =
+  "http://ec2-3-101-140-233.us-west-1.compute.amazonaws.com:8080/shoprite";
 export const loginAPI = (username, password) => {
   const data = qs.stringify({
     username,
     password,
   });
-  return axios.post("http://localhost:8080/backEndServer/login", data, {
+  return axios.post(`${prodURL}/login`, data, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       Accept: "application/json",
@@ -15,11 +18,11 @@ export const loginAPI = (username, password) => {
 };
 
 export const logoutAPI = () => {
-  return axios.get("http://localhost:8080/backEndServer/logout");
+  return axios.get(`${prodURL}/logout`);
 };
 
 export const employeesAPI = () => {
-  return axios.get("http://localhost:8080/backEndServer/employees");
+  return axios.get(`${prodURL}/employees`);
 };
 
 export const changeRoleAPI = (id, newRole) => {
@@ -27,7 +30,7 @@ export const changeRoleAPI = (id, newRole) => {
     id,
     newRole,
   });
-  return axios.post("http://localhost:8080/backEndServer/change", data, {
+  return axios.post(`${prodURL}/change`, data, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       Accept: "application/json",
@@ -36,7 +39,7 @@ export const changeRoleAPI = (id, newRole) => {
 };
 
 export const deleteEmployeeAPI = (id) => {
-  return axios.get(`http://localhost:8080/backEndServer/fire?id=${id}`);
+  return axios.get(`${prodURL}/fire?id=${id}`);
 };
 
 export const newEmployeeAPI = (name, role) => {
@@ -44,7 +47,7 @@ export const newEmployeeAPI = (name, role) => {
     names: name,
     jobs: role,
   });
-  return axios.post("http://localhost:8080/backEndServer/add", data, {
+  return axios.post(`${prodURL}/add`, data, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       Accept: "application/json",
