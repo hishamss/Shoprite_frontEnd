@@ -37,7 +37,7 @@ function Landing() {
     <div id="landing-container">
       <Card id="login-card">
         <Card.Body>
-          <h1 style={{ marginTop: "20px" }}>Welcome to Shoprite</h1>
+          <h1 style={{ marginTop: "20px" }}>Welcome to Shoprite Test</h1>
           <Form id="login-form" onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="login-username">
               <Form.Control
