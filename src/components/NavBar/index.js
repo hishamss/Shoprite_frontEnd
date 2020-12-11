@@ -1,11 +1,12 @@
 import "./style.css";
 import logo from "../../images/logo-navbar.png";
 import { Navbar, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { logoutAPI } from "../../API";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 function NavBar() {
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function NavBar() {
           <Nav.Link
             as={NavLink}
             exact
-            activeClassName="activeLink"
+            className={location.pathname.includes("/home") ? "activeLink" : ""}
             to="/home"
             key="1"
           >
@@ -44,7 +45,7 @@ function NavBar() {
             <Nav.Link
               as={NavLink}
               exact
-              activeClassName="activeLink"
+              className={location.pathname.includes("/new") ? "activeLink" : ""}
               to="/new"
               key="2"
             >
