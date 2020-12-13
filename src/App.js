@@ -62,11 +62,7 @@ function App() {
           <Route
             path="/"
             render={() => {
-              if (isLoggedIn()) {
-                window.location.href = "/home";
-              } else {
-                window.location.href = "/login";
-              }
+              isLoggedIn() ? <Home /> : (window.location.href = "/login");
             }}
           />
         </Switch>
