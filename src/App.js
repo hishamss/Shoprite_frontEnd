@@ -33,19 +33,14 @@ function App() {
             exact
             path="/login"
             render={() =>
-              // !isLoggedIn() ? <Landing /> : (window.location.href = "/home")
-              !isLoggedIn() ? <Landing /> : <Redirect to="/home" />
+              !isLoggedIn() ? <Landing /> : (window.location.href = "/home")
             }
           />
           <Route
             exact
             path="/home"
             render={() => {
-              if (isLoggedIn()) {
-                return <Home />;
-              } else {
-                return <Redirect to="/login" />;
-              }
+              isLoggedIn() ? <Home /> : (window.location.href = "/login");
             }}
           />
           <Route
@@ -60,7 +55,7 @@ function App() {
                   return <Redirect to="/home" />;
                 }
               } else {
-                return <Redirect to="/login" />;
+                window.location.href = "/login";
               }
             }}
           />
@@ -68,9 +63,9 @@ function App() {
             path="/"
             render={() => {
               if (isLoggedIn()) {
-                return <Redirect to="/home" />;
+                window.location.href = "/home";
               } else {
-                return <Redirect to="/login" />;
+                window.location.href = "/login";
               }
             }}
           />
