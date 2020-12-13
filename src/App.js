@@ -39,9 +39,9 @@ function App() {
           <Route
             exact
             path="/home"
-            render={() => {
-              isLoggedIn() ? <Home /> : (window.location.href = "/login");
-            }}
+            render={() =>
+              isLoggedIn() ? <Home /> : (window.location.href = "/login")
+            }
           />
           <Route
             exact
