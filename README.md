@@ -15,10 +15,10 @@ This is front-end website for Shoprite API server build mainly using ReactJS. Th
 
 Below is the steps I used to setup the build pipeline:
 
-- on EC2 instance, install npm, node and express
-- install Jenkins on Tomcat server
-- Enable webhook on github repository to trigger Jenkins build pipeline whenever new changes pushed to the main branch
-- The pipeline stages include cleaning the public folder for express, run npm install, run npm build, and copy the new build folder to express public folder
+- On EC2 instance, install npm, node and express
+- Installed Jenkins on Tomcat server
+- Enabled webhook on github repository to trigger Jenkins build pipeline whenever new changes pushed to the main branch
+- Created pipeline stages including cleaning the public folder for express, run npm install, run npm build, and copy the new build folder to express public folder
 <hr>
 <h3>Usage</h3>
 
