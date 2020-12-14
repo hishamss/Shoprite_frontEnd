@@ -1,4 +1,4 @@
-Jenkins pasts the build file for React in ExpressJS public folder
+Jenkins copy/paste React build files in ExpressJS public folder
 
 Express setup:
 
